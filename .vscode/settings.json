@@ -1,0 +1,13 @@
+{
+    "files.eol": "\n",
+    "prettier.endOfLine": "lf",
+    "mongoRunner": {
+        "connection": {
+            "url": "mongodb://localhost:27017",
+            "activeOnStartUp": true,
+            "options": {
+                "ssl": false
+            }
+        }
+    }
+}
