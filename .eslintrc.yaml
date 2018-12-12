@@ -3,7 +3,7 @@
   extends: eslint:recommended
   rules:
     no-console: "off"
-    indent : 2
+    indent : [2, "tab"]
   env:
     node: true
     mocha: true

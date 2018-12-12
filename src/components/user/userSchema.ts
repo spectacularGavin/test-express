@@ -25,7 +25,6 @@ UserSchema.methods.getPasswordHash = function(): string {
 UserSchema.methods.setPasswordHash = function(
     hash: string
 ): UserModelInterface {
-    console.log("set password hash : " + hash);
     this.passwordHash = hash;
     return this;
 };

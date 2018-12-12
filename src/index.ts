@@ -1,9 +1,11 @@
 import app from "./app";
+import db from "./database";
 import * as config from "../appconfig.json";
 import * as mongoose from "mongoose";
 import { User } from "./components/user/userSchema";
 import * as bcrypt from "bcrypt";
 import * as readline from "readline";
+import {Password} from "./components/authentication";
 // setup server here
 
 const port = process.env.PORT || 3000;
@@ -12,6 +14,19 @@ const cli = readline.createInterface({
     output: process.stdout
 });
 
+const startApplication = () => {
+    app.listen(port, err => {
+        if (err) {
+            return console.log(err);
+        }
+
+        return console.log(`server is listening on ${port}`);
+    });
+};
+
+db().then(startApplication); 
+
+/*
 // todo: use rxjs or aync functions here instead of this callback mess
 mongoose.connect(
     config.db.mongodb.conn,
@@ -23,6 +38,7 @@ mongoose.connect(
             console.log(`count is ${count}`);
 
             if (count > 0) {
+                startApplication();
                 return;
             }
 
@@ -52,16 +68,11 @@ mongoose.connect(
                             }
                         });
 
-                        app.listen(port, err => {
-                            if (err) {
-                                return console.log(err);
-                            }
-
-                            return console.log(`server is listening on ${port}`);
-                        });
+                        startApplication();
                     });
                 });
             });
         });
     }
 );
+*/
