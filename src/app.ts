@@ -13,10 +13,10 @@ class App {
 
 	private mountRoutes(): void {
 		const router = express.Router();
-    this.express.use(bodyParser());
+    	this.express.use(bodyParser.urlencoded({ extended: true }));
     
 		this.express.use((req, res, next) => {
-			console.log(req.method, req.path);
+			console.log(req.method, req.path, req.body);
 			next();
 		});
 

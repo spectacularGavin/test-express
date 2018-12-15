@@ -16,6 +16,7 @@ export class BCryptStrategy implements PasswordStrategyInterface {
 	}
 
 	verify(known:string, hash: string): Observable<boolean> {
+		console.log("xxx", known, hash,bcrypt.compare(known, hash));
         return from(bcrypt.compare(known, hash));
 	}
 }
@@ -34,8 +35,9 @@ export class PasswordStrategy implements PasswordStrategyInterface {
 	}
 
 	verify(known:string, hash: string): Observable<boolean> {
-        const source: Observable<boolean> = of(false);
+		return this.strategy.verify(known, hash);
+        /*const source: Observable<boolean> = of(false);
 
-		return source.pipe(switchMap(str => this.strategy.verify(known, hash)));
+		return source.pipe(switchMap(str => this.strategy.verify(known, hash)));*/
 	}
 }
